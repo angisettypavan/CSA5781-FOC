@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <math.h>
+
+double calculateSin(double x, int terms) {
+    double sine = x;  // First term of the series is x
+    int sign = -1;    // Used to alternate the sign of the terms
+    double numerator = x;
+    double denominator = 1;
+
+    for (int i = 3; i <= terms * 2; i += 2) {
+        numerator *= x * x;      // Multiply numerator by x^2 for each iteration
+        denominator *= i * (i-1); // Multiply denominator by i*(i-1) for each iteration
+        sine += sign * (numerator / denominator);
+        sign *= -1;              // Change the sign for the next term
+    }
+
+    return sine;
+}
+
+int main() {
+    double angle;
+    int terms;
+
+    printf("Enter the angle in radians: ");
+    scanf("%lf", &angle);
+
+    printf("Enter the number of terms: ");
+    scanf("%d", &terms);
+
+    double result = calculateSin(angle, terms);
+    double reference = sin(angle);
+
+    printf("Using series approximation: %.6lf\n", result);
+    printf("Actual sine value: %.6lf\n", reference);
+
+    return 0;
+}
+
+Output :
+Enter the angle in radians: 45
+Enter the number of terms: 5
+Using series approximation: 2012590829.179688
+Actual sine value: 0.850904
