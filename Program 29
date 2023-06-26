@@ -1,0 +1,50 @@
+Exponential series [e
+-1 = 1 – x/1! + x
+2
+/2! – x
+3
+/3! + x4
+/4! . . . . . . ]
+
+Program :
+#include <stdio.h>
+#include <math.h>
+
+double calculateExponential(double x, int terms) {
+    double exponential = 1.0; // First term of the series is 1.0
+    int sign = -1;           // Used to alternate the sign of the terms
+    double numerator = x;
+    double denominator = 1;
+
+    for (int i = 2; i <= terms; i++) {
+        exponential += sign * (numerator / denominator);
+        numerator *= x;            // Multiply numerator by x for each iteration
+        denominator *= i;          // Multiply denominator by i for each iteration
+        sign *= -1;                // Change the sign for the next term
+    }
+
+    return exponential;
+}
+
+int main() {
+    double x = -1.0;  // Value of x for e^(-1)
+    int terms;
+
+    printf("Enter the number of terms: ");
+    scanf("%d", &terms);
+
+    double result = calculateExponential(x, terms);
+    double reference = exp(x);
+
+    printf("Using series approximation: %.6lf\n", result);
+    printf("Actual exponential value: %.6lf\n", reference);
+
+    return 0;
+}
+
+Output :
+Enter the number of terms:
+
+5
+Using series approximation: 2.708333
+Actual exponential value: 0.367879
