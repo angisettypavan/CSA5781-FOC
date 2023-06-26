@@ -1,0 +1,53 @@
+Cos series [cos(x) = 1 – x
+2
+/2! + x
+4
+/4! – x
+6
+/6! . . . . . . ]
+
+
+Program :
+#include <stdio.h>
+#include <math.h>
+
+double calculateCos(double x, int terms) {
+    double cosine = 1.0; // First term of the series is 1.0
+    int sign = -1;      // Used to alternate the sign of the terms
+    double numerator = x * x;
+    double denominator = 2;
+
+    for (int i = 2; i <= terms * 2; i += 2) {
+        cosine += sign * (numerator / denominator);
+        numerator *= x * x;      // Multiply numerator by x^2 for each iteration
+        denominator *= i * (i-1); // Multiply denominator by i*(i-1) for each iteration
+        sign *= -1;              // Change the sign for the next term
+    }
+
+    return cosine;
+}
+
+int main() {
+    double angle;
+    int terms;
+
+    printf("Enter the angle in radians: ");
+    scanf("%lf", &angle);
+
+    printf("Enter the number of terms: ");
+    scanf("%d", &terms);
+
+    double result = calculateCos(angle, terms);
+    double reference = cos(angle);
+
+    printf("Using series approximation: %.6lf\n", result);
+    printf("Actual cosine value: %.6lf\n", reference);
+
+    return 0;
+}
+
+Output :
+Enter the angle in radians: 45
+Enter the number of terms: 5
+Using series approximation: -410749623429.538510
+Actual cosine value: 0.525322
