@@ -1,0 +1,45 @@
+#include <stdio.h>
+
+int main() {
+    int a, b, c;
+
+    printf("Enter the value of A: ");
+    scanf("%d", &a);
+
+    printf("Enter the value of B: ");
+    scanf("%d", &b);
+
+    printf("Enter the value of C: ");
+    scanf("%d", &c);
+
+    printf("Before swapping:\n");
+    printf("A = %d\n", a);
+    printf("B = %d\n", b);
+    printf("C = %d\n", c);
+
+    // Swapping the values
+    int temp = a;
+    a = b;
+    b = c;
+    c = temp;
+
+    printf("After swapping:\n");
+    printf("A = %d\n", a);
+    printf("B = %d\n", b);
+    printf("C = %d\n", c);
+
+    return 0;
+}
+
+Output :
+Enter the value of A: 5
+Enter the value of B: 3
+Enter the value of C: 3
+Before swapping:
+A = 5
+B = 3
+C = 3
+After swapping:
+A = 3
+B = 3
+C = 5
