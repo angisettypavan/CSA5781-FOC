@@ -1,0 +1,36 @@
+#include <stdio.h>
+
+int main() {
+    int num1, num2, temp;
+
+    printf("Enter the first number: ");
+    scanf("%d", &num1);
+
+    printf("Enter the second number: ");
+    scanf("%d", &num2);
+
+    printf("Before swapping:\n");
+    printf("First number = %d\n", num1);
+    printf("Second number = %d\n", num2);
+
+    // Swapping using a temporary variable
+    temp = num1;
+    num1 = num2;
+    num2 = temp;
+
+    printf("After swapping:\n");
+    printf("First number = %d\n", num1);
+    printf("Second number = %d\n", num2);
+
+    return 0;
+}
+
+oUTPUT:
+Enter the first number: 5
+Enter the second number: 2
+Before swapping:
+First number = 5
+Second number = 2
+After swapping:
+First number = 2
+Second number = 5
